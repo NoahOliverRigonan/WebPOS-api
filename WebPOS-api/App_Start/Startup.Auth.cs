@@ -31,6 +31,11 @@ namespace WebPOS_api
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            //app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            //app.UseOAuthBearerTokens(OAuthOptions);
+
             // Configure the application for OAuth based flow
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions
