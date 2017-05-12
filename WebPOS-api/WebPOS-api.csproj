@@ -170,6 +170,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\ApiMstTableController.cs" />
     <Compile Include="ApiControllers\ApiMstTableGroupController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -213,6 +214,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>posdb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Entities\MstTable.cs" />
     <Compile Include="Entities\MstTableGroup.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
