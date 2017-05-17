@@ -170,6 +170,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\ApiMstItemController.cs" />
+    <Compile Include="ApiControllers\ApiTrnSalesController.cs" />
     <Compile Include="ApiControllers\ApiMstTableController.cs" />
     <Compile Include="ApiControllers\ApiMstTableGroupController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -214,6 +216,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>posdb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Entities\MstItem.cs" />
+    <Compile Include="Entities\TrnSales.cs" />
     <Compile Include="Entities\MstTable.cs" />
     <Compile Include="Entities\MstTableGroup.cs" />
     <Compile Include="Global.asax.cs">

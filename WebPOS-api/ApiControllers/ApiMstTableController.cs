@@ -26,7 +26,6 @@ namespace WebPOS_api.ApiControllers
                             TopLocation = d.TopLocation,
                             LeftLocation = d.LeftLocation
                         };
-
             return table.ToList();
         }
     }
