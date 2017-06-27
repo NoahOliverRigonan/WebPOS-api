@@ -39,6 +39,13 @@ namespace WebPOS_api.Entities
         public Boolean IsLocked { get; set; }
         public String DefaultKitchenReport { get; set; }
         public Boolean IsPackage { get; set; }
+        public List<Entities.MstUnit> listUnit { get; set; }
+        public List<Entities.MstSupplier> listSupplier { get; set; }
+        public List<Entities.MstAccount> listSalesAccount { get; set; }
+        public List<Entities.MstAccount> listAssetAccount { get; set; }
+        public List<Entities.MstAccount> listCostAccount { get; set; }
+        public List<Entities.MstTax> listPurchaseVatTax { get; set; }
+        public List<Entities.MstTax> listSalesVatTax { get; set; }
 
     }
 }

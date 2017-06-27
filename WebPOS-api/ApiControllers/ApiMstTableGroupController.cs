@@ -17,8 +17,25 @@ namespace WebPOS_api.ApiControllers
         public List<Entities.MstTableGroup> listMstTableGroupId()
         {
             var tableGroup = from d in db.MstTableGroups
-                             where d.TableGroup != "Delivery" && d.TableGroup != "Walk-in"
                              select new Entities.MstTableGroup
+                             {
+                                 Id = d.Id,
+                                 EntryUserId = d.EntryUserId,
+                                 EntryDateTime = d.EntryDateTime,
+                                 TableGroup = d.TableGroup,
+                                 UpdateDateTime = d.UpdateDateTime,
+                                 UpdateUserId = d.UpdateUserId,
+                                 IsLocked = d.IsLocked
+                             };
+            return tableGroup.ToList();
+        }
+
+        [HttpGet, Route("get")]
+        public List<Entities.MstTableGroup> listMstTableGroupWalkInDelivery()
+        {
+            var tableGroup = from d in db.MstTableGroups
+                             where d.TableGroup != "Dine-in"
+                             select new Entities.MstTableGroup 
                              {
                                  Id = d.Id,
                                  EntryUserId = d.EntryUserId,

@@ -170,7 +170,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\ApiMstCustomerController.cs" />
+    <Compile Include="ApiControllers\ApiMstDiscountController.cs" />
+    <Compile Include="ApiControllers\ApiMstDiscountItemController.cs" />
+    <Compile Include="ApiControllers\ApiMstItemComponentController.cs" />
     <Compile Include="ApiControllers\ApiMstItemController.cs" />
+    <Compile Include="ApiControllers\ApiMstItemGroupController.cs" />
+    <Compile Include="ApiControllers\ApiMstItemGroupItemController.cs" />
+    <Compile Include="ApiControllers\ApiMstSupplierController.cs" />
+    <Compile Include="ApiControllers\ApiMstUserController.cs" />
     <Compile Include="ApiControllers\ApiTrnSalesController.cs" />
     <Compile Include="ApiControllers\ApiMstTableController.cs" />
     <Compile Include="ApiControllers\ApiMstTableGroupController.cs" />
@@ -216,10 +224,47 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>posdb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Entities\MstAccount.cs" />
+    <Compile Include="Entities\MstCustomer.cs" />
+    <Compile Include="Entities\MstDiscount.cs" />
+    <Compile Include="Entities\MstDiscountItem.cs" />
     <Compile Include="Entities\MstItem.cs" />
+    <Compile Include="Entities\MstItemComponent.cs" />
+    <Compile Include="Entities\MstItemGroup.cs" />
+    <Compile Include="Entities\MstItemGroupItem.cs" />
+    <Compile Include="Entities\MstItemInventory.cs" />
+    <Compile Include="Entities\MstItemPackage.cs" />
+    <Compile Include="Entities\MstItemPrice.cs" />
+    <Compile Include="Entities\MstPayType.cs" />
+    <Compile Include="Entities\MstPeriod.cs" />
+    <Compile Include="Entities\MstSupplier.cs" />
+    <Compile Include="Entities\MstTax.cs" />
+    <Compile Include="Entities\MstTerm.cs" />
+    <Compile Include="Entities\MstTerminal.cs" />
+    <Compile Include="Entities\MstUnit.cs" />
+    <Compile Include="Entities\MstUser.cs" />
+    <Compile Include="Entities\MstUserForm.cs" />
+    <Compile Include="Entities\SysAuditTrail.cs" />
+    <Compile Include="Entities\SysForm.cs" />
+    <Compile Include="Entities\SysSalesLocked.cs" />
+    <Compile Include="Entities\TrnCollection.cs" />
+    <Compile Include="Entities\TrnCollectionLine.cs" />
+    <Compile Include="Entities\TrnDebitCreditMemo.cs" />
+    <Compile Include="Entities\TrnDebitCreditMemoLine.cs" />
+    <Compile Include="Entities\TrnDisbursement.cs" />
+    <Compile Include="Entities\TrnJournal.cs" />
+    <Compile Include="Entities\TrnPurchaseOrder.cs" />
+    <Compile Include="Entities\TrnPurchaseOrderLine.cs" />
     <Compile Include="Entities\TrnSales.cs" />
     <Compile Include="Entities\MstTable.cs" />
     <Compile Include="Entities\MstTableGroup.cs" />
+    <Compile Include="Entities\TrnSalesLine.cs" />
+    <Compile Include="Entities\TrnStockCount.cs" />
+    <Compile Include="Entities\TrnStockCountLine.cs" />
+    <Compile Include="Entities\TrnStockIn.cs" />
+    <Compile Include="Entities\TrnStockInLine.cs" />
+    <Compile Include="Entities\TrnStockOut.cs" />
+    <Compile Include="Entities\TrnStockOutLine.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

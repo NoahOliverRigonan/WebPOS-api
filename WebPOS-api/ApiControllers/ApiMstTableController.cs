@@ -28,5 +28,20 @@ namespace WebPOS_api.ApiControllers
                         };
             return table.ToList();
         }
+
+        [HttpGet, Route("list")]
+        public List<Entities.MstTable> listMstTable()
+        {
+            var table = from d in db.MstTables
+                        select new Entities.MstTable 
+                        {
+                            Id = d.Id,
+                            TableCode = d.TableCode,
+                            TableGroupId = d.TableGroupId,
+                            TopLocation = d.TopLocation,
+                            LeftLocation = d.LeftLocation
+                        };
+            return table.ToList();
+        }
     }
 }
