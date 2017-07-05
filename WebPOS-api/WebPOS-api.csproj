@@ -179,6 +179,7 @@
     <Compile Include="ApiControllers\ApiMstItemGroupItemController.cs" />
     <Compile Include="ApiControllers\ApiMstSupplierController.cs" />
     <Compile Include="ApiControllers\ApiMstUserController.cs" />
+    <Compile Include="ApiControllers\ApiMstUserFormController.cs" />
     <Compile Include="ApiControllers\ApiTrnSalesController.cs" />
     <Compile Include="ApiControllers\ApiMstTableController.cs" />
     <Compile Include="ApiControllers\ApiMstTableGroupController.cs" />
