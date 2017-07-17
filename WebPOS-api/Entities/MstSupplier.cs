@@ -10,6 +10,7 @@ namespace WebPOS_api.Entities
         public Int32 Id { get; set; }
         public String Supplier { get; set; }
         public String Address { get; set; }
+        public String SupplierAndAddress { get; set; }
         public String TelephoneNumber { get; set; }
         public String CellphoneNumber { get; set; }
         public String FaxNumber { get; set; }

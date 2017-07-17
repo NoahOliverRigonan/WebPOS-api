@@ -180,9 +180,11 @@
     <Compile Include="ApiControllers\ApiMstSupplierController.cs" />
     <Compile Include="ApiControllers\ApiMstUserController.cs" />
     <Compile Include="ApiControllers\ApiMstUserFormController.cs" />
+    <Compile Include="ApiControllers\ApiTrnPurchaseOrderController.cs" />
     <Compile Include="ApiControllers\ApiTrnSalesController.cs" />
     <Compile Include="ApiControllers\ApiMstTableController.cs" />
     <Compile Include="ApiControllers\ApiMstTableGroupController.cs" />
+    <Compile Include="ApiControllers\ApiTrnStockInController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />

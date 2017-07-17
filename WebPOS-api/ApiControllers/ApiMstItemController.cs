@@ -75,6 +75,10 @@ namespace WebPOS_api.ApiControllers
 
             var item = from d in db.MstItems
                        where d.Id == Convert.ToInt32(id)
+                       //d.UnitId == units.Select(m => m.Id).FirstOrDefault() &&
+                       //d.SalesAccountId == salesAccount.Select(m => m.Id).FirstOrDefault() &&
+                       //d.AssetAccountId == salesAccount.Select(m => m.Id).FirstOrDefault() &&
+                       //d.CostAccountId == salesAccount.Select(m => m.Id).FirstOrDefault()
                        select new Entities.MstItem
                        {
                            Id = d.Id,
