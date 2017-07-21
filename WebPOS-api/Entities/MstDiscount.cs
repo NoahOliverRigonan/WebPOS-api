@@ -31,5 +31,7 @@ namespace WebPOS_api.Entities
         public DateTime UpdateDateTime { get; set; }
         public Boolean IsLocked { get; set; }
         public List<Entities.MstItem> listOfItem { get; set; }
+        public List<Entities.MstItem> listOfItemCode { get; set; }
+        public List<Entities.MstItem> listOfItemDescription { get; set; }
     }
 }

@@ -10,8 +10,9 @@ namespace WebPOS_api.Entities
         public Int32 Id { get; set; }
         public Int32 PeriodId { get; set; }
         public String Period { get; set; }
-        public String StockInDate { get; set; }
+        public DateTime StockInDate { get; set; }
         public String StockInNumber { get; set; }
+        public String StockInNumDate { get; set; }
         public Int32 SupplierId { get; set; }
         public String Supplier { get; set; }
         public String Remarks { get; set; }
@@ -34,7 +35,8 @@ namespace WebPOS_api.Entities
         public List<Entities.MstSupplier> listSupplier { get; set; }
         public List<Entities.TrnPurchaseOrder> listPurchaseOrder { get; set; }
         public List<Entities.MstPeriod> listPeriod { get; set; }
+        public List<Entities.MstItem> listItem { get; set; }
+        public List<Entities.MstUnit> listUnit { get; set; }
+        public List<Entities.MstAccount> listAccount { get; set; }
     }
-
-
 }

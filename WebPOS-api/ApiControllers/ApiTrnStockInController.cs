@@ -25,7 +25,7 @@ namespace WebPOS_api.ApiControllers
                           {
                               Id = d.Id,
                               PeriodId = d.PeriodId,
-                              StockInDate = d.StockInDate.ToShortDateString(),
+                              StockInDate = d.StockInDate,
                               StockInNumber = d.StockInNumber,
                               SupplierId = d.SupplierId,
                               Supplier = supplier.Where(m => m.Id == d.SupplierId).Select(m => m.Supplier).FirstOrDefault(),
@@ -51,13 +51,18 @@ namespace WebPOS_api.ApiControllers
         {
             var user = from d in db.MstUsers select d;
 
-            var item = from d in db.MstItems select d;
-
             var supplier = from d in db.MstSuppliers select d;
 
             var purchaseOrder = from d in db.TrnPurchaseOrders select d;
 
             var period = from d in db.MstPeriods select d;
+
+            //LIST FOR STOCK IN LINE
+            var item = from d in db.MstItems select d;
+
+            var unit = from d in db.MstUnits select d;
+
+            var account = from d in db.MstAccounts select d;
 
             var stockIn = from d in db.TrnStockIns
                           where d.Id == Convert.ToInt32(id)
@@ -65,7 +70,7 @@ namespace WebPOS_api.ApiControllers
                           {
                               Id = d.Id,
                               PeriodId = d.PeriodId,
-                              StockInDate = d.StockInDate.Day + "/" + d.StockInDate.Month + "/" + d.StockInDate.Year,
+                              StockInDate = d.StockInDate,
                               StockInNumber = d.StockInNumber,
                               SupplierId = d.SupplierId,
                               Remarks = d.Remarks,
@@ -123,6 +128,23 @@ namespace WebPOS_api.ApiControllers
                               {
                                   Id = m.Id,
                                   Period = m.Period
+                              }).ToList(),
+
+                              listItem = item.Select(m => new Entities.MstItem
+                              {
+                                  Id = m.Id,
+                                  ItemDescription = m.ItemDescription,
+                              }).ToList(),
+
+                              listUnit = unit.Select(m => new Entities.MstUnit
+                              {
+                                  Id = m.Id,
+                                  Unit = m.Unit,
+                              }).ToList(),
+
+                              listAccount = account.Where(m => m.AccountType == "ASSET").Select(m => new Entities.MstAccount { 
+                                  Id = m.Id,
+                                  Account = m.Account,
                               }).ToList(),
                           };
             return stockIn.ToList();

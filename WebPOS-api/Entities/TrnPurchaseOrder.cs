@@ -29,6 +29,8 @@ namespace WebPOS_api.Entities
         public List<Entities.MstUser> listApprovedBy { get; set; }
         public List<Entities.MstPeriod> listPeriod { get; set; }
         public List<Entities.MstSupplier> listSupplier { get; set; }
+        public List<Entities.MstItem> listItem { get; set; }
+        public List<Entities.MstUnit> listUnit { get; set; }
 
     }
 }

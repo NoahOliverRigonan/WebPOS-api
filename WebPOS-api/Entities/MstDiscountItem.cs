@@ -12,7 +12,5 @@ namespace WebPOS_api.Entities
         public Int32 ItemId { get; set; }
         public String ItemCode { get; set; }
         public String Item { get; set; }
-        public List<Entities.MstItem> listOfItemCode { get; set; }
-        public List<Entities.MstItem> listOfItemDescription { get; set; }
     }
 }

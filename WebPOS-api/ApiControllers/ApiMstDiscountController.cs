@@ -52,6 +52,10 @@ namespace WebPOS_api.ApiControllers
         [HttpGet, Route("get/{id}")]
         public List<Entities.MstDiscount> listMstDiscount(String id)
         {
+
+            var listItem = from d in db.MstItems
+                           select d;
+
             var discount = from d in db.MstDiscounts
                            where d.Id == Convert.ToInt32(id)
                            select new Entities.MstDiscount
@@ -78,7 +82,18 @@ namespace WebPOS_api.ApiControllers
                                EntryDateTime = d.EntryDateTime,
                                UpdateUserId = d.UpdateUserId,
                                UpdateDateTime = d.UpdateDateTime,
-                               IsLocked = d.IsLocked
+                               IsLocked = d.IsLocked,
+                               listOfItemCode = listItem.Select(m => new Entities.MstItem
+                               {
+                                   Id = m.Id,
+                                   ItemCode = m.ItemCode,
+                               }).ToList(),
+
+                               listOfItemDescription = listItem.Select(m => new Entities.MstItem
+                               {
+                                   Id = m.Id,
+                                   ItemDescription = m.ItemDescription
+                               }).ToList()
                            };
             return discount.ToList();
         }
@@ -158,7 +173,7 @@ namespace WebPOS_api.ApiControllers
                     updateDiscount.EntryDateTime = DateTime.Now;
                     updateDiscount.UpdateUserId = discount.UpdateUserId;
                     updateDiscount.UpdateDateTime = DateTime.Now;
-                    updateDiscount.IsLocked = discount.IsLocked;
+                    updateDiscount.IsLocked = true;
                     db.SubmitChanges();
 
                     return Request.CreateResponse(HttpStatusCode.OK);

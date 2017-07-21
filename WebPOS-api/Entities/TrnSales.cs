@@ -25,6 +25,7 @@ namespace WebPOS_api.Entities
         public Int32? SeniorCitizenAge { get; set; }
         public String Remarks { get; set; }
         public Int32 SalesAgent { get; set; }
+        public String SalesAgentName { get; set; }
         public Int32 TerminalId { get; set; }
         public Int32 PreparedBy { get; set; }
         public Int32 CheckedBy { get; set; }
@@ -40,5 +41,6 @@ namespace WebPOS_api.Entities
         public Int32 UpdateUserId { get; set; }
         public DateTime UpdateDateTime { get; set; }
         public Int32? Pax { get; set; }
+        public String SalesNumDateBalanceAmount { get; set; }
     }
 }

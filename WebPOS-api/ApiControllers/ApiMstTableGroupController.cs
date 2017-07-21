@@ -17,6 +17,7 @@ namespace WebPOS_api.ApiControllers
         public List<Entities.MstTableGroup> listMstTableGroupId()
         {
             var tableGroup = from d in db.MstTableGroups
+                             where d.TableGroup != "Walk-in" && d.TableGroup != "Delivery"
                              select new Entities.MstTableGroup
                              {
                                  Id = d.Id,

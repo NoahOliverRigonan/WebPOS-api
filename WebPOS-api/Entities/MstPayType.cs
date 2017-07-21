@@ -9,6 +9,6 @@ namespace WebPOS_api.Entities
     {
         public Int32 Id { get; set; }
         public String PayType { get; set; }
-        public Int32 AccountId { get; set; }
+        public Int32? AccountId { get; set; }
     }
 }

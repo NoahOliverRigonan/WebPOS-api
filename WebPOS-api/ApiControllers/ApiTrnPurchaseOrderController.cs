@@ -51,6 +51,10 @@ namespace WebPOS_api.ApiControllers
 
             var period = from d in db.MstPeriods select d;
 
+            var item = from d in db.MstItems select d;
+
+            var unit = from d in db.MstUnits select d;
+
             var purchaseOrder = from d in db.TrnPurchaseOrders
                                 where d.Id == Convert.ToInt32(id)
                                 select new Entities.TrnPurchaseOrder
@@ -93,7 +97,7 @@ namespace WebPOS_api.ApiControllers
                                         Id = m.Id,
                                         Supplier = m.Supplier,
                                         Address = m.Address,
-                                        SupplierAndAddress = m.Supplier + " " + m.Address
+                                        SupplierAndAddress = m.Supplier + " " + " " + " " + " " + "||" + m.Address
                                     }).ToList(),
 
                                     listPeriod = period.Select(m => new Entities.MstPeriod
@@ -102,7 +106,16 @@ namespace WebPOS_api.ApiControllers
                                         Period = m.Period
                                     }).ToList(),
 
-                                  
+                                    listItem = item.Select(m => new Entities.MstItem
+                                    {
+                                        Id = m.Id,
+                                        ItemDescription = m.ItemDescription
+                                    }).ToList(),
+
+                                    listUnit = unit.Select(m => new Entities.MstUnit { 
+                                        Id = m.Id,
+                                        Unit = m.Unit
+                                    }).ToList(),
                                 };
             return purchaseOrder.ToList();
         }
@@ -122,10 +135,11 @@ namespace WebPOS_api.ApiControllers
                 var stockIn = from d in db.TrnStockIns.OrderByDescending(m => m.StockInNumber) select d;
                 var userId = (from d in db.MstUsers where d.AspNetUserId == User.Identity.GetUserId() select d).FirstOrDefault().Id;
 
+
                 Data.TrnPurchaseOrder addPurchaseOrder = new Data.TrnPurchaseOrder();
                 addPurchaseOrder.PeriodId = period.FirstOrDefault();
                 addPurchaseOrder.PurchaseOrderDate = DateTime.Today;
-                addPurchaseOrder.PurchaseOrderNumber = stockIn.Select(m => m.StockInNumber).FirstOrDefault();
+                addPurchaseOrder.PurchaseOrderNumber = purcherOrder.Select(m => m.PurchaseOrderNumber).FirstOrDefault();
                 addPurchaseOrder.Amount = 0;
                 addPurchaseOrder.SupplierId = supplier.Select(m => m.Id).FirstOrDefault();
                 addPurchaseOrder.Remarks = "n/a";
@@ -164,7 +178,7 @@ namespace WebPOS_api.ApiControllers
                     updatePurchaseOrder.PeriodId = purchaseOrder.PeriodId;
                     updatePurchaseOrder.PurchaseOrderDate = Convert.ToDateTime(purchaseOrder.PurchaseOrderDate);
                     updatePurchaseOrder.PurchaseOrderNumber = purchaseOrder.PurchaseOrderNumber;
-                    updatePurchaseOrder.Amount = purchaseOrder.SupplierId;
+                    updatePurchaseOrder.Amount = purchaseOrder.Amount;
                     updatePurchaseOrder.SupplierId = purchaseOrder.SupplierId;
                     updatePurchaseOrder.Remarks = purchaseOrder.Remarks;
                     updatePurchaseOrder.PreparedBy = purchaseOrder.PreparedBy;

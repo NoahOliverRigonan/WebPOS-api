@@ -13,35 +13,37 @@ namespace WebPOS_api.ApiControllers
     {
         private Data.posdbDataContext db = new Data.posdbDataContext();
 
-        [HttpPost, Route("add")]
-        public Int32 addDiscountItem(Entities.MstDiscountItem discountItem)
+        [HttpPost, Route("post")]
+        public HttpResponseMessage addDiscountItem(Entities.MstDiscountItem discountItem)
         {
+            try
+            {
                 Data.MstDiscountItem newDiscountItems = new Data.MstDiscountItem();
-                if (newDiscountItems.DiscountId == 0 && newDiscountItems.ItemId == 0)
-                {
-                    newDiscountItems.ItemId = 0;
-                    newDiscountItems.DiscountId = 0;
 
-                }
-                else
-                {
-                    newDiscountItems.ItemId = discountItem.ItemId;
-                    newDiscountItems.DiscountId = discountItem.DiscountId;
-                    db.MstDiscountItems.InsertOnSubmit(newDiscountItems);
-                    db.SubmitChanges();
 
-                }
+                newDiscountItems.ItemId = discountItem.ItemId;
+                newDiscountItems.DiscountId = discountItem.DiscountId;
+                db.MstDiscountItems.InsertOnSubmit(newDiscountItems);
+                db.SubmitChanges();
 
-            return newDiscountItems.Id;
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+         
         }
 
-        [HttpGet, Route("list")]
-        public List<Entities.MstDiscountItem> listOfDiscountItem()
+        [HttpGet, Route("get/{id}")]
+        public List<Entities.MstDiscountItem> listOfDiscountItem(String id)
         {
             var listItem = from d in db.MstItems
                            select d;
 
             var discountitem = from d in db.MstDiscountItems
+                               where d.DiscountId == Convert.ToInt32(id)
                                select new Entities.MstDiscountItem
                                {
                                    Id = d.Id,
@@ -49,17 +51,7 @@ namespace WebPOS_api.ApiControllers
                                    DiscountId = d.DiscountId,
                                    ItemCode = d.MstItem.ItemCode,
                                    Item = d.MstItem.ItemDescription,
-                                   listOfItemCode = listItem.Select(m => new Entities.MstItem
-                                   {
-                                       Id = m.Id,
-                                       ItemCode = m.ItemCode,
-                                   }).ToList(),
-
-                                   listOfItemDescription = listItem.Select(m => new Entities.MstItem
-                                   {
-                                       Id = m.Id,
-                                       ItemDescription = m.ItemDescription
-                                   }).ToList()
+                          
                                };
 
             return discountitem.ToList();

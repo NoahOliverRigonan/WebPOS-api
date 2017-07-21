@@ -24,5 +24,8 @@ namespace WebPOS_api.Entities
         public Int32 UpdateUserId { get; set; }
         public DateTime UpdateDateTime { get; set; }
         public Boolean IsLocked { get; set; }
+        public List<Entities.MstTerm> listTerm { get; set; }
+        public List<Entities.MstAccount> listAccount { get; set; }
+        public List<Entities.MstItemPrice> listDefaultPrice { get; set; }
     }
 }

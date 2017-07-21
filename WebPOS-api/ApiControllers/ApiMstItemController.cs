@@ -236,7 +236,6 @@ namespace WebPOS_api.ApiControllers
                 if (items.Any())
                 {
                     var userId = (from d in db.MstUsers where d.AspNetUserId == User.Identity.GetUserId() select d).FirstOrDefault().Id;
-
                     var updateItems = items.FirstOrDefault();
                     updateItems.ItemCode = item.ItemCode;
                     updateItems.BarCode = item.BarCode;
